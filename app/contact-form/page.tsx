@@ -45,12 +45,14 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("https://formspree.io/f/xdkogkvo", {
+      // First, try sending directly to Michele's email
+      const response = await fetch("https://formspree.io/f/xanbzbpo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
@@ -59,18 +61,46 @@ export default function ContactForm() {
           message: formData.message,
           _replyto: formData.email,
           _subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
+          _to: "michelespore@gmail.com",
         }),
       })
 
+      console.log("Form response:", response.status, response.statusText)
+
       if (response.ok) {
         setIsSubmitted(true)
+
+        // Also send a backup email using a different method
+        try {
+          await fetch("/api/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              to: "michelespore@gmail.com",
+              subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+              email: formData.email,
+              phone: formData.phone,
+              coachingType: formData.coachingType,
+              message: formData.message,
+            }),
+          })
+        } catch (backupError) {
+          console.log("Backup email failed, but main form succeeded")
+        }
       } else {
-        throw new Error("Form submission failed")
+        const errorText = await response.text()
+        console.error("Form submission failed:", errorText)
+        throw new Error(`Form submission failed: ${response.status}`)
       }
     } catch (error) {
       console.error("Error submitting form:", error)
-      // You could add error state handling here if needed
-      alert("There was an error submitting the form. Please try again or contact us directly.")
+      alert(
+        `There was an error submitting the form: ${error.message}. Please try again or contact Michele directly at michelespore@gmail.com or (919) 780-1081.`,
+      )
     }
 
     setIsSubmitting(false)
