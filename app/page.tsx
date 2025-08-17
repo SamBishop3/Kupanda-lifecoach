@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import Head from "next/head"
 import { ChevronLeft, ChevronRight, Star, Menu, X, ArrowRight, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -38,6 +39,11 @@ export default function KupandaCoaching() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
+    // Set the document title directly
+    document.title = "Kupanda Coaching - Leadership & Performance Coaching"
+  }, [])
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
     }, 30000) // Changed from 5000 to 30000 (30 seconds)
@@ -63,6 +69,15 @@ export default function KupandaCoaching() {
 
   return (
     <>
+      <Head>
+        <title>Kupanda Coaching - Leadership & Performance Coaching</title>
+        <meta
+          name="description"
+          content="Unlock your potential through executive leadership and performance coaching. Seeding Success, Growing Together."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <div className="min-h-screen bg-white">
         {/* Header */}
         <header

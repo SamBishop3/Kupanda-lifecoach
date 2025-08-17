@@ -5,10 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: {
-    default: "Kupanda Coaching - Leadership & Performance Coaching",
-    template: "%s | Kupanda Coaching",
-  },
+  title: "Kupanda Coaching - Leadership & Performance Coaching",
   description:
     "Unlock your potential through executive leadership and performance coaching. Seeding Success, Growing Together.",
   generator: "Next.js",
@@ -40,6 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Kupanda Coaching - Leadership & Performance Coaching</title>
+        <meta
+          name="description"
+          content="Unlock your potential through executive leadership and performance coaching. Seeding Success, Growing Together."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
