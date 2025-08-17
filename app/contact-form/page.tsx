@@ -44,11 +44,36 @@ export default function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch("https://formspree.io/f/xdkogkvo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          coachingType: formData.coachingType,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
+        }),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        throw new Error("Form submission failed")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      // You could add error state handling here if needed
+      alert("There was an error submitting the form. Please try again or contact us directly.")
+    }
 
     setIsSubmitting(false)
-    setIsSubmitted(true)
   }
 
   if (isSubmitted) {
