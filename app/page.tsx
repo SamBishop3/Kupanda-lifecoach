@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import Head from "next/head"
 import { ChevronLeft, ChevronRight, Star, Menu, X, ArrowRight, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -64,16 +63,6 @@ export default function KupandaCoaching() {
 
   return (
     <>
-      <Head>
-        <title>Kupanda Coaching - Leadership & Performance Coaching</title>
-        <meta
-          name="description"
-          content="Unlock your potential through executive leadership and performance coaching. Seeding Success, Growing Together."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <div className="min-h-screen bg-white">
         {/* Header */}
         <header
@@ -209,22 +198,19 @@ export default function KupandaCoaching() {
                   <p>
                     At Kupanda Coaching, we believe that greatness lives in everyone—sometimes it just needs a little
                     cultivation. Through executive leadership and performance coaching, we empower individuals and teams
-                    to unlock potential, elevate performance, and define success on their terms. Whether you're striving
-                    to achieve personal goals or professional success, we're here to support the journey.
+                    to unlock potential, elevate performance, and define success on their terms.
                   </p>
                 </div>
               </div>
               <div className="order-1 lg:order-2 flex justify-center">
                 <div className="relative">
-                  <div className="w-80 h-80 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shadow-lg">
-                    <Image
-                      src="/about-workshop.jpg"
-                      alt="Leadership Workshop - Coach presenting to engaged audience"
-                      width={400}
-                      height={400}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Image
+                    src="/about-workshop.jpg"
+                    alt="Leadership Workshop - Coach presenting to engaged audience"
+                    width={400}
+                    height={400}
+                    className="w-80 h-80 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem]"
+                  />
                 </div>
               </div>
             </div>
@@ -246,46 +232,45 @@ export default function KupandaCoaching() {
             <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-12">
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-sm h-full">
-                  <div className="w-20 h-20 bg-[#fac0b5]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#fac0b5]/40 transition-colors">
-                    <div className="w-10 h-10 bg-[#fac0b5] rounded-full flex items-center justify-center text-gray-900 font-semibold">
+                  <div className="w-20 h-20 bg-[#78ae99]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#78ae99]/40 transition-colors">
+                    <div className="w-10 h-10 bg-[#78ae99] rounded-full flex items-center justify-center text-white font-semibold">
                       1
                     </div>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-900 mb-4">Chemistry Consultation</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    During an initial call, you'll have the opportunity to share your goals and objectives while
-                    discovering how Kupanda can support you or your team in reaching your desired outcome and achieving
-                    success.
+                    During an initial call, share your goals and objectives, and discover how Kupanda can support you or
+                    your team in reaching your desired outcomes.
                   </p>
                 </div>
               </div>
 
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-sm h-full">
-                  <div className="w-20 h-20 bg-[#fac0b5]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#fac0b5]/40 transition-colors">
-                    <div className="w-10 h-10 bg-[#fac0b5] rounded-full flex items-center justify-center text-gray-900 font-semibold">
+                  <div className="w-20 h-20 bg-[#78ae99]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#78ae99]/40 transition-colors">
+                    <div className="w-10 h-10 bg-[#78ae99] rounded-full flex items-center justify-center text-white font-semibold">
                       2
                     </div>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-900 mb-4">Commit to Coaching</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Once you agree to partner with Kupanda, your coach will develop a personalized program to support
-                    your journey to realizing success during a three, six or 12-month engagement.
+                    Partner with Kupanda, and your coach will develop a personalized program to support your journey to
+                    realizing success.
                   </p>
                 </div>
               </div>
 
               <div className="text-center group">
                 <div className="bg-white rounded-2xl p-6 shadow-sm h-full">
-                  <div className="w-20 h-20 bg-[#fac0b5]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#fac0b5]/40 transition-colors">
-                    <div className="w-10 h-10 bg-[#fac0b5] rounded-full flex items-center justify-center text-gray-900 font-semibold">
+                  <div className="w-20 h-20 bg-[#78ae99]/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#78ae99]/40 transition-colors">
+                    <div className="w-10 h-10 bg-[#78ae99] rounded-full flex items-center justify-center text-white font-semibold">
                       3
                     </div>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-900 mb-4">Cultivate Success</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    You and your coach will start with foundational exercises to explore your motivations,
-                    opportunities, and goals. From there, we'll work together to cultivate your desired outcomes.
+                    Start your journey with foundational exercises to explore your motivations and goals, and work
+                    together with your coach to take actionable steps toward personal greatness.
                   </p>
                 </div>
               </div>
@@ -299,7 +284,7 @@ export default function KupandaCoaching() {
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-6">Client Stories</h2>
               <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Here's what people are saying about their transformation journey.
+                Here's what people are saying about their Kupanda experience.
               </p>
             </div>
 
@@ -373,32 +358,30 @@ export default function KupandaCoaching() {
                 <div className="text-gray-900 space-y-6 leading-relaxed">
                   <p>
                     With nearly three decades of experience spanning the nonprofit and corporate worlds, Michele brings
-                    deep expertise, heart-led leadership, and a gift for unlocking potential in others.
+                    deep expertise and a gift for unlocking potential in others.
                   </p>
                   <p>
-                    As the visionary behind Kupanda Coaching, she draws on a career rich in coaching, mentoring, and
-                    executive leadership—including her tenure as the executive leader of a national nonprofit. Her
-                    foundation in communications and marketing informs a thoughtful, strategic approach to helping
-                    individuals and organizations elevate their purpose and presence.
+                    As the visionary behind Kupanda Coaching, she draws on a career rich in coaching and executive
+                    leadership, most recently as the leader of a national nonprofit. Her foundation in communications
+                    and marketing informs a thoughtful, strategic approach to helping individuals and organizations
+                    elevate their purpose and presence.
                   </p>
                   <p>
-                    Michele holds a certification in Leadership and Performance Coaching from Brown University as well
-                    as her MBA and a certificate in nonprofit leadership, underscoring her commitment to lifelong growth
-                    and excellence.
+                    Michele holds a certification in Leadership and Performance Coaching from Brown University School of
+                    Professional Studies, an MBA and a certificate in nonprofit leadership, underscoring her commitment
+                    to lifelong growth and excellence.
                   </p>
                 </div>
               </div>
               <div className="flex justify-center">
                 <div className="relative">
-                  <div className="w-80 h-80 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shadow-lg">
-                    <Image
-                      src="/michele-headshot.jpg"
-                      alt="Michele - Kupanda Coaching Founder"
-                      width={400}
-                      height={400}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Image
+                    src="/michele-headshot.jpg"
+                    alt="Michele - Kupanda Coaching Founder"
+                    width={400}
+                    height={400}
+                    className="w-80 h-auto sm:w-96 rounded-2xl shadow-lg"
+                  />
                 </div>
               </div>
             </div>
@@ -427,9 +410,6 @@ export default function KupandaCoaching() {
               <div className="space-y-6">
                 <div>
                   <h3 className="text-2xl font-medium text-gray-900 mb-6">Ready to start your growth journey?</h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    Let's connect and explore how we can work together to achieve your goals.
-                  </p>
                 </div>
 
                 <div className="space-y-4">
@@ -440,10 +420,10 @@ export default function KupandaCoaching() {
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
                       <a
-                        href="mailto:michele@kupandacoaching.com"
+                        href="mailto:Michelespore@gmail.com"
                         className="text-gray-600 hover:text-[#78ae99] transition-colors"
                       >
-                        michele@kupandacoaching.com
+                        Michelespore@gmail.com
                       </a>
                     </div>
                   </div>

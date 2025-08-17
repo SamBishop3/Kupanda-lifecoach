@@ -5,7 +5,10 @@ import { GeistMono } from "geist/font/mono"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Kupanda Coaching - Leadership & Performance Coaching",
+  title: {
+    default: "Kupanda Coaching - Leadership & Performance Coaching",
+    template: "%s | Kupanda Coaching",
+  },
   description:
     "Unlock your potential through executive leadership and performance coaching. Seeding Success, Growing Together.",
   generator: "Next.js",
