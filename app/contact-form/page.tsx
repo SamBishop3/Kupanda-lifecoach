@@ -100,6 +100,14 @@ export default function ContactForm() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <head>
+        <title>Schedule Your Consultation - Kupanda Coaching</title>
+        <meta
+          name="description"
+          content="Ready to start your growth journey? Schedule your complimentary chemistry consultation with Michele at Kupanda Coaching."
+        />
+      </head>
+
       {/* Header */}
       <header className="px-4 sm:px-8 py-6 bg-white border-b border-gray-100">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
