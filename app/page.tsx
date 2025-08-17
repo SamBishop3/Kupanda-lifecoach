@@ -202,9 +202,7 @@ export default function KupandaCoaching() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4">About Kupanda</h2>
-              <p className="text-lg text-gray-600 mb-8 italic">
-                Kupanda (coo-pond-a) ~ the act of ascending, climbing, planting
-              </p>
+              <p className="text-lg text-gray-600 mb-8 italic">Kupanda ~ the act of ascending, climbing, planting</p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
