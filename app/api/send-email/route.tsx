@@ -21,9 +21,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Use your Resend API key
+    // Try environment variable first, then fallback to hardcoded
     const apiKey = process.env.RESEND_API_KEY || "re_YjVDQAzz_AAetK6o3mi6AoupHmbmtTWXJ"
-    console.log("Using API key:", apiKey.substring(0, 10) + "...")
+    console.log("API key source:", process.env.RESEND_API_KEY ? "environment" : "hardcoded")
+
+    if (!apiKey) {
+      console.error("No API key available")
+      return Response.json(
+        {
+          success: false,
+          error: "Email service not configured - missing API key",
+        },
+        { status: 500 },
+      )
+    }
 
     const resend = new Resend(apiKey)
 
@@ -31,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: "Kupanda Coaching <onboarding@resend.dev>",
-      to: ["michele@kupandacoaching.com"], // Changed to your verified email
+      to: ["michele@kupandacoaching.com"],
       subject: `New Consultation Request from ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -77,7 +88,7 @@ export async function POST(request: NextRequest) {
     console.log("Email sent successfully:", data)
     return Response.json({
       success: true,
-      message: "Email sent successfully",
+      message: "Email sent successfully to michele@kupandacoaching.com",
       data,
     })
   } catch (error) {
