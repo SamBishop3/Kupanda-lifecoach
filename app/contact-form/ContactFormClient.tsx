@@ -67,7 +67,7 @@ export default function ContactFormClient() {
           message: formData.message,
           _replyto: formData.email,
           _subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
-          _to: "Michelespore@gmail.com",
+          _to: "michele@kupandacoaching.com",
         }),
       })
 
@@ -84,7 +84,7 @@ export default function ContactFormClient() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              to: "Michelespore@gmail.com",
+              to: "michele@kupandacoaching.com",
               subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
               firstName: formData.firstName,
               lastName: formData.lastName,
@@ -105,7 +105,7 @@ export default function ContactFormClient() {
     } catch (error) {
       console.error("Error submitting form:", error)
       alert(
-        `There was an error submitting the form: ${error.message}. Please try again or contact Michele directly at Michelespore@gmail.com or (919) 780-1081.`,
+        `There was an error submitting the form: ${error.message}. Please try again or contact Michele directly at michele@kupandacoaching.com or (919) 780-1081.`,
       )
     }
 
