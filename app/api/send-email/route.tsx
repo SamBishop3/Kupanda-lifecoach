@@ -8,6 +8,8 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { firstName, lastName, email, phone, coachingType, message } = body
 
+    console.log("Form data received:", { firstName, lastName, email, coachingType })
+
     // Validate required fields
     if (!firstName || !lastName || !email || !coachingType) {
       return Response.json(
@@ -19,16 +21,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Use your Resend API key
     const apiKey = process.env.RESEND_API_KEY || "re_YjVDQAzz_AAetK6o3mi6AoupHmbmtTWXJ"
+    console.log("Using API key:", apiKey.substring(0, 10) + "...")
+
     const resend = new Resend(apiKey)
 
-    console.log("Sending email...")
+    console.log("Sending email to michele@kupandacoaching.com...")
 
     const { data, error } = await resend.emails.send({
       from: "Kupanda Coaching <onboarding@resend.dev>",
-      // Change this to the email address you used to sign up with Resend
-      // This is likely michele@kupandacoaching.com or your Gmail
-      to: ["michele@kupandacoaching.com"], // Try this first
+      to: ["michele@kupandacoaching.com"], // Changed to your verified email
       subject: `New Consultation Request from ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
