@@ -433,10 +433,10 @@ export default function KupandaCoaching() {
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
                       <a
-                        href="mailto:michele@kupandacoaching.com"
+                        href="mailto:Michelespore@gmail.com"
                         className="text-gray-600 hover:text-[#78ae99] transition-colors"
                       >
-                        michele@kupandacoaching.com
+                        Michelespore@gmail.com
                       </a>
                     </div>
                   </div>

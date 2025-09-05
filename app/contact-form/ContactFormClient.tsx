@@ -51,61 +51,52 @@ export default function ContactFormClient() {
     setIsSubmitting(true)
 
     try {
-      // First, try sending directly to Michele's email
-      const response = await fetch("https://formspree.io/f/xanbzbpo", {
+      console.log("Form data being sent:", formData)
+      console.log("Making request to /api/send-email")
+
+      // Use our own API route instead of external services
+      const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${formData.firstName} ${formData.lastName}`,
+          to: "Michelespore@gmail.com",
+          subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
           phone: formData.phone,
           coachingType: formData.coachingType,
           message: formData.message,
-          _replyto: formData.email,
-          _subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
-          _to: "michele@kupandacoaching.com",
         }),
       })
 
-      console.log("Form response:", response.status, response.statusText)
+      console.log("Response status:", response.status)
+      console.log("Response headers:", response.headers)
 
-      if (response.ok) {
+      const responseText = await response.text()
+      console.log("Raw response:", responseText)
+
+      let result
+      try {
+        result = JSON.parse(responseText)
+      } catch (parseError) {
+        console.error("JSON parse error:", parseError)
+        throw new Error(`Invalid JSON response: ${responseText.substring(0, 100)}...`)
+      }
+
+      console.log("Parsed result:", result)
+
+      if (response.ok && result.success) {
         setIsSubmitted(true)
-
-        // Also send a backup email using a different method
-        try {
-          await fetch("/api/send-email", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              to: "michele@kupandacoaching.com",
-              subject: `New Consultation Request from ${formData.firstName} ${formData.lastName}`,
-              firstName: formData.firstName,
-              lastName: formData.lastName,
-              email: formData.email,
-              phone: formData.phone,
-              coachingType: formData.coachingType,
-              message: formData.message,
-            }),
-          })
-        } catch (backupError) {
-          console.log("Backup email failed, but main form succeeded")
-        }
       } else {
-        const errorText = await response.text()
-        console.error("Form submission failed:", errorText)
-        throw new Error(`Form submission failed: ${response.status}`)
+        throw new Error(result.error || "Failed to send email")
       }
     } catch (error) {
       console.error("Error submitting form:", error)
       alert(
-        `There was an error submitting the form: ${error.message}. Please try again or contact Michele directly at michele@kupandacoaching.com or (919) 780-1081.`,
+        `There was an error submitting the form: ${error.message}. Please contact Michele directly at Michelespore@gmail.com or (919) 780-1081.`,
       )
     }
 
@@ -124,10 +115,18 @@ export default function ContactFormClient() {
               <Send className="w-8 h-8 text-[#78ae99]" />
             </div>
             <h2 className="text-2xl font-medium text-gray-900 mb-4">Thank You!</h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-gray-600 mb-4 leading-relaxed">
               Your consultation request has been submitted successfully. Michele will get back to you within 24 hours to
               schedule your chemistry consultation.
             </p>
+            <div className="bg-gray-50 p-4 rounded-lg mb-6">
+              <p className="text-sm text-gray-600">
+                <strong>Backup Contact:</strong> If you don't hear back within 24 hours, please call Michele directly at{" "}
+                <a href="tel:+19197801081" className="text-[#78ae99] hover:underline">
+                  (919) 780-1081
+                </a>
+              </p>
+            </div>
             <Link href="/">
               <Button className="bg-[#78ae99] hover:bg-[#78ae99]/90 text-white px-6 py-3 rounded-full">
                 Return to Home
