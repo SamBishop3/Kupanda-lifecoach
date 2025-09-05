@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import localFont from "next/font/local"
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -8,6 +9,28 @@ import Link from "next/link"
 import Head from "next/head"
 import { ArrowLeft, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+const avenirNext = localFont({
+  src: [
+    {
+      path: "/fonts/AvenirNext-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "/fonts/AvenirNext-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "/fonts/AvenirNext-DemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-avenir-next",
+  fallback: ["system-ui", "sans-serif"],
+})
 
 const coachingTypes = [
   "Personal Development",
@@ -148,7 +171,10 @@ export default function ContactFormClient() {
         />
       </Head>
 
-      <div className="min-h-screen bg-gray-50">
+      <div
+        className={`min-h-screen bg-gray-50 ${avenirNext.variable} font-sans`}
+        style={{ fontFamily: "var(--font-avenir-next, system-ui, sans-serif)" }}
+      >
         {/* Header */}
         <header className="px-4 sm:px-8 py-6 bg-white border-b border-gray-100">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
@@ -156,7 +182,13 @@ export default function ContactFormClient() {
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back to Home</span>
             </Link>
-            <Image src="/logo-header.png" alt="Kupanda Coaching" width={1000} height={760} className="h-16 w-auto" />
+            <Image
+              src="/logo-header.png"
+              alt="Kupanda Coaching"
+              width={1000}
+              height={760}
+              className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto"
+            />
           </div>
         </header>
 

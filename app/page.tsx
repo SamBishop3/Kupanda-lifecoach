@@ -477,7 +477,7 @@ export default function KupandaCoaching() {
                   alt="Kupanda Coaching"
                   width={1080}
                   height={792}
-                  className="h-12 sm:h-16 w-auto mx-auto md:mx-0"
+                  className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto mx-auto md:mx-0"
                 />
               </div>
             </div>
